@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Website Preferences</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" 
+  rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fefae0;
+      padding: 2rem;
+      color: #333;
+      font-size:large
+    }
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: bolder}
+
+    form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="color"],
+    input[type="file"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .color-picker-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .color-picker-row input[type="color"] {
+      width: 50px;
+      height: 30px;
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      display: block;
+    }
+
+    .color-picker-row input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    .color-picker-row input[type="color"]::-webkit-color-swatch {
+      border: none;
+    }
+
+    .hex-wrapper {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      border: 1px solid #000;
+      padding: 0 8px;
+      border-radius: 4px;
+      background-color: white;
+    }
+
+    .hex-wrapper span {
+      font-weight: bold;
+      user-select: none;
+      margin-right: 4px;
+      line-height: 30px;
+    }
+
+    .hex-wrapper input[type="text"] {
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      width: 80px;
+    }
+
+    .submit-btn {
+      padding: 12px 24px;
+      background-color: #fff;
+      color: rgb(6, 116, 226);
+      border: 2px solid rgb(6, 116, 226);
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      font-weight: bold;
+      width: auto;
+      display: block;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .submit-btn:hover {
+      background-color: rgb(6, 116, 226);
+      color: white;
+      border-color: rgb(255, 255, 255);
+    }
+
+    .submit-btn:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin: 0.3rem 0;
+    }
+
+    .personal-info-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .color-picker-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  </style>
+  
+  <h1>Client Website Preferences Form</h1>
+
+  <form action="https://formspree.io/f/mnndlnjr" method="POST" enctype="multipart/form-data">
+
+<!-- Personal Info -->
+<label>Personal Information</label>
+<div class="personal-info-vertical" style="display: flex; flex-direction: column; gap: 1rem;">
+  <div class="info-box">
+    <label for="firstName">First Name</label>
+    <input type="text" name="First Name" required />
+  </div>
+  <div class="info-box">
+    <label for="middleName">Middle Name</label>
+    <input type="text" name="Middle Name" />
+  </div>
+  <div class="info-box">
+    <label for="lastName">Last Name</label>
+    <input type="text" name="Last Name" required />
+  </div>
+  <div class="info-box">
+    <label for="extension">Extension</label>
+    <input type="text" name="Name Extension" placeholder="e.g., Jr., Sr." />
+  </div>
+</div>
+
+
+
+    <!-- Color Preferences -->
+    <label>Color Preferences (Pick Up to 3)</label>
+    <p>Need help finding the perfect colors? Visit <a href="https://coolors.co/" target="_blank">coolors.co</a></p>
+
+    <div class="color-picker-vertical">
+      <div class="color-picker-row">
+        <input type="color" id="color1" value="#1E90FF" onchange="updateColorInput(1)">
+        <div class="hex-wrapper">
+          <span>#</span>
+          <input type="text" id="color1-input" maxlength="6" value="1E90FF" oninput="updateColorPicker(1)">
+        </div>
+      </div>
+
+      <div class="color-picker-row">
+        <input type="color" id="color2" value="#32CD32" onchange="updateColorInput(2)">
+        <div class="hex-wrapper">
+          <span>#</span>
+          <input type="text" id="color2-input" maxlength="6" value="32CD32" oninput="updateColorPicker(2)">
+        </div>
+      </div>
+
+      <div class="color-picker-row">
+        <input type="color" id="color3" value="#FF4500" onchange="updateColorInput(3)">
+        <div class="hex-wrapper">
+          <span>#</span>
+          <input type="text" id="color3-input" maxlength="6" value="FF4500" oninput="updateColorPicker(3)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Preference -->
+    <label for="theme">Preferred Theme</label>
+    <select name="Theme">
+      <option value="Minimalist">Minimalist</option>
+      <option value="Loud">Loud & Bold</option>
+      <option value="Sport">Sporty</option>
+      <option value="Corporate">Corporate</option>
+      <option value="Elegant">Elegant</option>
+    </select>
+
+    <!-- Sitelinks -->
+    <label>Select Desired Sitelinks (You can choose multiple)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="Sitelinks[]" value="Home" /> Home</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="About Us" /> About Us</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Services" /> Services</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Products" /> Products</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Contact Us" /> Contact Us</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="FAQs" /> FAQs</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Blog" /> Blog</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Testimonials" /> Testimonials</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Careers" /> Careers</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Gallery" /> Gallery</label>
+    </div>
+
+    <!-- Call to Action -->
+    <label>Select Preferred Call to Action (Choose one or more)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="Call to Action[]" value="Contact Us Now" /> Contact Us Now</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Get a Free Quote" /> Get a Free Quote</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Book an Appointment" /> Book an Appointment</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Shop Now" /> Shop Now</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Learn More" /> Learn More</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Sign Up Today" /> Sign Up Today</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Download Now" /> Download Now</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Join the Community" /> Join the Community</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Get Started" /> Get Started</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Request Demo" /> Request Demo</label>
+    </div>
+
+    <!-- Logo Upload -->
+    <label for="logo">Upload Your Logo</label>
+    <input type="file" name="Logo Upload" accept="image/*" />
+
+    <label>Would you like the logo improved?</label>
+    <select name="Logo Improvement">
+      <option value="No">No</option>
+      <option value="Yes">Yes</option>
+    </select>
+
+    <!-- Image Uploads -->
+    <label for="website-images">Upload Images for Your Website (Max 100)</label>
+    <input type="file" id="website-images" name="website-images[]" accept="image/*" multiple required onchange="checkImageLimit(this)">
+    <small>You can upload up to 100 images.</small>
+
+    <!-- Target Audience -->
+    <label for="audience">Target Audience</label>
+    <textarea name="Target Audience" rows="2" placeholder="e.g., Small businesses, Gen Z audience, Tech users"></textarea>
+
+    <!-- Features -->
+    <label>Desired Website Features</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="Features[]" value="Blog" /> Blog</label>
+      <label><input type="checkbox" name="Features[]" value="E-commerce" /> E-commerce</label>
+      <label><input type="checkbox" name="Features[]" value="Contact Form" /> Contact Form</label>
+      <label><input type="checkbox" name="Features[]" value="Gallery" /> Image Gallery</label>
+      <label><input type="checkbox" name="Features[]" value="Testimonials" /> Testimonials</label>
+      <label><input type="checkbox" name="Features[]" value="Booking System" /> Booking System</label>
+      <label><input type="checkbox" name="Features[]" value="Custom Feature" /> Others:</label>
+      <input type="text" name="Other Features" placeholder="Specify other features..." />
+    </div>
+
+    <!-- Competitor Websites -->
+    <label for="competitors">Inspiration or Competitor Sites</label>
+    <textarea name="Competitor Sites" rows="3" placeholder="List URLs or descriptions here..."></textarea>
+
+    <!-- Notes -->
+    <label for="notes">Additional Notes or Instructions</label>
+    <textarea name="Notes" rows="4"></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+
+  <!-- Scripts -->
+  <script>
+    function updateColorInput(index) {
+      const colorInput = document.getElementById(`color${index}`);
+      const textInput = document.getElementById(`color${index}-input`);
+      textInput.value = colorInput.value.replace('#', '');
+    }
+
+    function updateColorPicker(index) {
+      const colorInput = document.getElementById(`color${index}`);
+      const textInput = document.getElementById(`color${index}-input`);
+      const colorValue = `#${textInput.value.trim()}`;
+      if (/^#[0-9A-Fa-f]{6}$/.test(colorValue)) {
+        colorInput.value = colorValue;
+      }
+    }
+
+    function checkImageLimit(input) {
+      if (input.files.length > 100) {
+        alert("You can only upload up to 100 images.");
+        input.value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
